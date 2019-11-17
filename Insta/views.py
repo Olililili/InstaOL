@@ -23,7 +23,7 @@ class PostsView(LoginRequiredMixin, ListView):
         for conn in UserConnection.objects.filter(creator=current_user).select_related('following'):
             following.add(conn.following)
         following.add(current_user)
-        return Post.objects.filter(author__in=following)
+        return Post.objects.filter(author__in=following).order_by('-date_created')
 
 class PostDetailView(DetailView):
     model = Post

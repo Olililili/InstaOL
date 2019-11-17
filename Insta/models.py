@@ -57,6 +57,7 @@ class Post(models.Model):
         blank=True,
         null=True
     )
+    date_created = models.DateTimeField(auto_now_add=True, null=True)
 
     def get_absolute_url(self):
         return reverse("post_detail", args=[str(self.id)])
