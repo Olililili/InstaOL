@@ -48,6 +48,12 @@ class UserDetailView(DetailView):
     model = InstaUser
     template_name = 'user_detail.html'
 
+class EditProfile(LoginRequiredMixin, UpdateView):
+    model = InstaUser
+    template_name = 'edit_profile.html'
+    fields = ['profile_pic', 'username']
+    login_url = 'login'
+
 class SignUp(CreateView):
     form_class = CustomUserCreationForm
     template_name = 'signup.html'
