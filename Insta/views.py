@@ -12,15 +12,17 @@ from Insta.forms import CustomUserCreationForm
 class HelloWorld(TemplateView):
     template_name = 'test.html'
 
-class PostsView(ListView):
+class PostsView(LoginRequiredMixin, ListView):
     model = Post
     template_name = 'index.html'
+    login_url = "login"
 
     def get_queryset(self):
         current_user = self.request.user
         following = set()
         for conn in UserConnection.objects.filter(creator=current_user).select_related('following'):
             following.add(conn.following)
+        following.add(current_user)
         return Post.objects.filter(author__in=following)
 
 class PostDetailView(DetailView):
