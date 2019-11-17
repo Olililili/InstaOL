@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 from Insta.views import (HelloWorld, PostsView, PostDetailView, PostCreateView, 
-PostUpdateView, PostDeleteView, addLike, UserDetailView, EditProfile)
+PostUpdateView, PostDeleteView, addLike, addComment, UserDetailView, EditProfile)
 
 urlpatterns = [
     path('helloworld', HelloWorld.as_view(), name='helloworld'),
@@ -27,6 +27,7 @@ urlpatterns = [
     path('post/update/<int:pk>/', PostUpdateView.as_view(), name='post_update'),
     path('post/detele/<int:pk>', PostDeleteView.as_view(), name='post_delete'),
     path('like', addLike, name='addLike'),
+    path('comment', addComment, name='addComment'),
     path('user/<int:pk>/', UserDetailView.as_view(), name='user_detail'),
     path('edit_profile/<int:pk>/', EditProfile.as_view(), name='edit_profile'),
 ]
