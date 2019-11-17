@@ -28,6 +28,9 @@ class InstaUser(AbstractUser):
         followers = UserConnection.objects.filter(following=self)
         return followers.filter(creator=user).exists()
 
+    def get_sorted_posts(self):
+        return self.my_posts.order_by('-date_created')
+
 class UserConnection(models.Model):
     created = models.DateTimeField(auto_now_add=True, editable=False)
     creator = models.ForeignKey(
