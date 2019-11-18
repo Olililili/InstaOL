@@ -17,10 +17,14 @@
                             {{ post.author.username }}
                         </a>
                         <span class="poster__timestamp">
-                            {{ post.posted_on|timesince }}
+                            {{ post.date_created|timesince }}
                         </span>
+                        <div>
+                            <span>{{ post.get_title }}</span>
+                        </div>
                     </div>
                 </div> 
+                
                 <a href="{% url 'post_detail' post.pk %}">
                     <img class="card__main-image" src="/{{ post.image.url }}">
                 </a>
