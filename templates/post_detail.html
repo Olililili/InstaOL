@@ -20,14 +20,12 @@
         <div class="comments-portion">
             <div class="likes-timestamp-row">
                 <div class="likes">
-                    {% if object.get_like_count %}
-                        {{ object.get_like_count }} like{% if object.get_like_count > 1 %}s{% endif %}
+                    {% if post.get_like_count %}
+                        {{ post.get_like_count }} like{% if post.get_like_count > 1 %}s{% endif %}
                     {% endif %}
                 </div>
-                <div class="timestamp">
-                    {{ object.posted_on|timesince }}
-                </div>
             </div>
+            <span>{{ post.get_title }}</span>
             <ul class="comment-list">
                     {% for comment in object.comments.all %}
                     <li class="comment-list__comment">
