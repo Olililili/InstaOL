@@ -1,0 +1,1 @@
+web: gunicorn InstaOL.wsgi --log-file -
